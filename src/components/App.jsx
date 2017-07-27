@@ -12,13 +12,20 @@ class App extends React.Component {
       <div>
         <Nav />
         <div className="col-md-7">
-          <VideoPlayer video={this.state.currentVideo}/>
+          <VideoPlayer video={this.state.currentVideo} />
         </div>
         <div className="col-md-5">
-          <VideoList videos={this.state.videoList} />
+          <VideoList videos={this.state.videoList}
+          handleTitleClick={this.handleTitleClick.bind(this)} />
         </div>
       </div>
     );
+  }
+
+  handleTitleClick(video) {
+    this.setState({
+      currentVideo: video
+    });
   }
 }
 
