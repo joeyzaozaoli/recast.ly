@@ -10,7 +10,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Nav />
+        <Nav search={this.handleUserInput.bind(this)} />
         <div className="col-md-7">
           <VideoPlayer video={this.state.currentVideo} />
         </div>
@@ -23,7 +23,13 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.props.searchYouTube({query: 'swan lake', max: 5, key: YOUTUBE_API_KEY}, this.populateLiveData.bind(this));
+    this.props.searchYouTube({query: 'swan lake', max: 5, key: YOUTUBE_API_KEY},
+    this.populateLiveData.bind(this));
+  }
+
+  handleUserInput(string) {
+    this.props.searchYouTube({query: string, max: 5, key: YOUTUBE_API_KEY},
+    this.populateLiveData.bind(this));
   }
 
   populateLiveData(videos) {
