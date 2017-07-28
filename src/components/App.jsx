@@ -5,7 +5,7 @@ class App extends React.Component {
       videoList: [],
       currentVideo: exampleVideoData[0]
     };
-    this.searchYouTubeDebounced = _.debounce(this.props.searchYouTube, 5000);
+    this.searchYouTubeDebounced = _.debounce(this.props.searchYouTube, 500);
   }
 
   render() {
