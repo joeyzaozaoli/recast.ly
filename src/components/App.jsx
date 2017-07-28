@@ -16,7 +16,7 @@ class App extends React.Component {
         </div>
         <div className="col-md-5">
           <VideoList videos={this.state.videoList}
-          handleTitleClick={this.handleTitleClick.bind(this)} />
+            handleTitleClick={this.handleTitleClick.bind(this)} />
         </div>
       </div>
     );
