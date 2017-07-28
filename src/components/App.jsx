@@ -5,6 +5,7 @@ class App extends React.Component {
       videoList: [],
       currentVideo: exampleVideoData[0]
     };
+    this.searchYouTubeDebounced = _.debounce(this.props.searchYouTube, 5000);
   }
 
   render() {
@@ -23,13 +24,13 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.props.searchYouTube({query: 'swan lake', max: 5, key: YOUTUBE_API_KEY},
-    this.populateLiveData.bind(this));
+    this.searchYouTubeDebounced({query: 'swan lake', max: 5, key: YOUTUBE_API_KEY},
+      this.populateLiveData.bind(this));
   }
 
   handleUserInput(string) {
-    this.props.searchYouTube({query: string, max: 5, key: YOUTUBE_API_KEY},
-    this.populateLiveData.bind(this));
+    this.searchYouTubeDebounced({query: string, max: 5, key: YOUTUBE_API_KEY},
+      this.populateLiveData.bind(this));
   }
 
   populateLiveData(videos) {
