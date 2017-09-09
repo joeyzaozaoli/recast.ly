@@ -23,9 +23,10 @@ class App extends React.Component {
     );
   }
 
-  componentDidMount() {
-    this.searchYouTubeDebounced({query: 'swan lake', max: 5, key: YOUTUBE_API_KEY},
-      this.populateLiveData.bind(this));
+  handleTitleClick(video) {
+    this.setState({
+      currentVideo: video
+    });
   }
 
   handleUserInput(string) {
@@ -40,10 +41,9 @@ class App extends React.Component {
     });
   }
 
-  handleTitleClick(video) {
-    this.setState({
-      currentVideo: video
-    });
+  componentDidMount() {
+    this.searchYouTubeDebounced({query: 'swan lake', max: 5, key: YOUTUBE_API_KEY},
+      this.populateLiveData.bind(this));
   }
 }
 
